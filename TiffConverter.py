@@ -4,6 +4,7 @@ import errno
 from PIL import Image, ImageFilter
 import shutil
 import multiprocessing
+import pdf2image
 outpath1 = 'C:\\Users\\MCOM\\Documents\\TestSpace'
 
 #환경설정을 저장해두는 클래스입니다.
@@ -90,7 +91,7 @@ def convertToPdf(enviroment: Environment, input_path):
 #Main Routine
 input_paths = []
 pdf_names = []
-environment = Environment(".jpg", 1, 70)
+environment = Environment(".jpg", 1, 30)
 
 while True:
     print("Baramsil 이미지 자동 PDF 포장기 1.0.0")

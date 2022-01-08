@@ -1,0 +1,7 @@
+*.tiff
+*.jpeg
+*.jpg
+*.tif
+*.png
+poppler*
+*.pdf
