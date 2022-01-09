@@ -1,29 +1,20 @@
 import fitz
+from multiprocessing import Process, Queue
 
-class Pdf2Image:
-    def __init__(self, file_name):
-        self.doc = fitz.open(file_name)
-    
-    def convert_pdf_to_image(self, start_page, end_page):
-        for i in range(start_page, end_page):
-            page = self.doc.load_page(i)
-            pix = page.get_pixmap()
-            output = "./hope/" + str(i) + ".tiff"
-            pix.save(output)
-            
-    def get_last_page(self):
-        return self.doc.page_count
-'''
+def convert_pdf_to_image_multiThread(file_name, thread_num):
+    page_num = get_last_page(file_name)
+    th1 = Process(target=convert_pdf_to_image, args=(0, page_num, file_name))
+    th1.start()
+    th1.join()
 
-def convert_pdf_to_image(start_page, end_page, filename):
-    doc = fitz.open(filename)
-    
-    for i in range(start_page, end_page+1):
+def convert_pdf_to_image(start_page, end_page, file_name):
+    doc = fitz.open(file_name)
+    for i in range(start_page, end_page):
         page = doc.load_page(i)
         pix = page.get_pixmap()
         output = "./hope/" + str(i) + ".tiff"
         pix.save(output)
-        
-#doc.page_count
 
-'''
+def get_last_page(file_name):
+    doc = fitz.open(file_name)
+    return doc.page_count
