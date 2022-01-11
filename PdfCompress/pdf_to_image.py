@@ -26,9 +26,10 @@ def convert_work(start_page, end_page, file_name):
     doc = fitz.open(file_name)
     for i in range(start_page, end_page):
         page = doc.load_page(i)
-        pix = page.get_pixmap(dpi=150)
-        output = "./temp/" + f'{i:06}' + ".tiff"
-        pix.save(output)
+        pix = page.get_pixmap(dpi=300)
+        output = "./temp/" + f'{i:06}' + ".jpeg"
+        pix.pil_save(output, format="jpeg", dpi=(300, 300), quality=70)
+        #pix.save(output, quality=70)
 
 def get_last_page(file_name):
     doc = fitz.open(file_name)

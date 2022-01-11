@@ -1,5 +1,6 @@
 import pdf_to_image
 import image_to_pdf
+from pprint import pprint
 '''
 #Main Routine
 input_paths = []
@@ -41,15 +42,19 @@ print("모든 변환을 끝마쳤습니다. 최종결과물은 프로그램이 �
 
 '''
 
+import fitz
+
 if __name__ == "__main__":
-    environment = image_to_pdf.Environment(".jpg", 1, 50)
+    environment = image_to_pdf.Environment(".jpg", 1, 70)
     #폴더에서 파일을 다 긁어오거나(pdf) 파일을 가져옴.
     #중간 경유지 역할을 하는 output 폴더를 만듬.
     #폴더에서 파일을 다 긁어옴(tiff)
     #pdf로 변환함.
-    pdf_name = "CD, W11, 클라우드 데브옵스.pdf"
+    pdf_name = "컴퓨터과학이 여는 세계, 이광근.pdf"
+    
+    
     pdf_to_image.convert_pdf_to_image(pdf_name, 6)
-    image_to_pdf.convertImage(environment, "./temp")
-    image_to_pdf.convertToPdf(environment, "./temp")
+    #image_to_pdf.convertImage(environment, "./temp")
+    #image_to_pdf.convertToPdf(environment, "./temp")
     
     
